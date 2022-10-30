@@ -10,7 +10,7 @@ find_package(Boost COMPONENTS system REQUIRED)
 include_directories(/usr/local/include ${OPENSSL_INCLUDE_DIR} ${Boost_INCLUDE_DIR})
 
 add_executable(eb_tgbot main.cpp main.hpp snippets.hpp 
-    Config.cpp Config.hpp CoordsData.hpp LegendWords.cpp LegendWords.hpp
+    Config.hpp CoordsData.hpp LegendWords.cpp LegendWords.hpp
     ../third_party/json-modern/json.hpp)
 
 target_link_libraries(eb_tgbot /usr/local/lib/libTgBot.a ${CMAKE_THREAD_LIBS_INIT} ${OPENSSL_LIBRARIES} ${Boost_LIBRARIES} ${CURL_LIBRARIES})
