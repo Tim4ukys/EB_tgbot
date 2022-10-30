@@ -91,6 +91,9 @@ int main() {
         
             if (n <= coords.size()) {
                 coords.erase(coords.begin() + n);
+                if (coords.empty()) {
+                    g_CoordsData.getMembData(msg->chat->id).erase(msg->from->id);
+                }
                 msgBeforeCmd(msg, GET_GOOD, "Координата успешно *удалена*\\.");
             }
             else {
