@@ -10,6 +10,13 @@ using namespace std::chrono_literals;
 
 CoordsData g_CoordsData{ "coords_data.json" };
 
+/**
+ * @brief Бесконечный цикл, работает пока run == true. end == true сигнализирует об окончании потока
+ * 
+ * @param bot Ссылка на бота
+ * @param run Работает пока true
+ * @param end Сигнализирует об окончании работы потока
+ */
 void infinity_polling(TgBot::Bot& bot, std::atomic_bool &run, std::atomic_bool &end) {
     try {
         TgBot::TgLongPoll longPoll(bot);
@@ -32,7 +39,7 @@ int main() {
     };
     
     auto getStrParam = [](std::string& t, std::vector<std::string> &outParam) -> bool {
-        if (!(std::count(t.begin(), t.end(), '\"') & 1)) {
+        if (!(std::count(t.begin(), t.end(), '\"') & 1)) { // <- Проверка на чётность числа
             size_t a{}, b;
             while (a = t.find('\"', a), a != std::string::npos) {
                 std::string s{ t.substr(a + 1, (b = t.find('\"', a + 1)) - 2) };

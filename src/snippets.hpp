@@ -4,6 +4,10 @@
 #include <list>
 #include <algorithm>
 
+/**
+ * @brief Экраннирует запрещенные символы для Telegram
+ * 
+ */
 std::string operator "" _tgstr(const char* text, const size_t sz) {
     const std::list<char> forb_symbols{ '[', ']', '_', '*', '`', '(', ')', '~' };
 
@@ -21,6 +25,12 @@ std::string operator "" _tgstr(const char* text, const size_t sz) {
     return str;
 }
 
+/**
+ * @brief Экраннирует запрещенные символы для Telegram
+ * 
+ * @param str Строка, в которой запр. символы
+ * @return std::string Нормальная строка
+ */
 std::string fix_tgstr(std::string str) {
     const std::list<char> forb_symbols{ '[', ']', '_', '*', '`', '(', ')', '~' };
 

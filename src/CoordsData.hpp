@@ -21,6 +21,11 @@ private:
     Config m_conf;
 
 public:
+    /**
+     * @brief Construct a new Coords Data object
+     * 
+     * @param baseName Имя файла
+     */
     explicit CoordsData(const std::string& baseName) : m_conf(baseName) {
         for (json::iterator cit = m_conf.m_json.begin(); cit != m_conf.m_json.end(); ++cit) {
             for (json::iterator it = cit.value().begin(); it != cit.value().end(); ++it) {
@@ -49,10 +54,22 @@ public:
         }
     }
 
+    /**
+     * @brief Получить координаты участников чата
+     * 
+     * @param chatId ID чата
+     * @return auto& Список координат в конкретном чате с ID участников
+     */
     inline auto& operator[] (uint64_t chatId) {
         return m_chatsData[chatId];
     }
 
+    /**
+     * @brief Получить координаты участников чата
+     * 
+     * @param chatId ID чата
+     * @return auto& Список координат в конкретном чате с ID участников
+     */
     inline auto& getMembData(int64_t chatId) {
         return m_chatsData[chatId];
     }

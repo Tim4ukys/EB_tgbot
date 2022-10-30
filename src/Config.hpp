@@ -17,6 +17,11 @@ protected:
 public:
     friend class CoordsData;
 
+    /**
+     * @brief Construct a new Config object
+     * 
+     * @param fileName Имя файла
+     */
     Config(const std::string &fileName) : m_fileName(fileName) {
         std::ifstream file{m_fileName};
         if (file.is_open()) {
